@@ -12,7 +12,7 @@ class CompanyService implements CompanyServiceInterface
     private $company;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param Company $company
      */
@@ -22,7 +22,7 @@ class CompanyService implements CompanyServiceInterface
     }
 
     /**
-     * List companies
+     * List companies ordered by name.
      * 
      * @return Response
      */
@@ -32,7 +32,8 @@ class CompanyService implements CompanyServiceInterface
     }
 
     /**
-     * Create company
+     * Create company. 
+     * Verify logo. If exists, call a ImageManagement helper to save it in storage.
      *
      * @param  array $data
      * 
@@ -49,7 +50,7 @@ class CompanyService implements CompanyServiceInterface
     }
 
     /**
-     * Get company by ID
+     * Get company by ID.
      *
      * @param  int $id
      * 
@@ -61,7 +62,9 @@ class CompanyService implements CompanyServiceInterface
     }
 
     /**
-     * Update company
+     * Update company.
+     * If the company wasn't found, return an status error to Controller.
+     * Verify new logo logo. If it's true, call a ImageManagement helper to save it in storage, removing the old one.
      *
      * @param  int $id
      * @param  array $data
@@ -97,7 +100,10 @@ class CompanyService implements CompanyServiceInterface
     }
 
     /**
-     * Delete company
+     * Delete company.
+     * If the company wasn't found, return an status error to Controller.
+     * Check if the company has some employee attached. If it's true, return an status error to Controller.
+     * After delete a company, remove the logo image from storage (If it exists).
      *
      * @param  int $id
      * 

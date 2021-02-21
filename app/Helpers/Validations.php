@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Validations
 {
     /**
-     * Validate company data
+     * Validate company data. It's used to create and update actions
      * 
      * @param array $data
      * 
@@ -31,7 +31,7 @@ class Validations
     }
 
     /**
-     * Validate employee data
+     * Validate employee data. It's used to create and update actions
      * 
      * @param array $data
      * 

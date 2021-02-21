@@ -164,6 +164,7 @@ return [
 
         /*
          * Package Service Providers...
+         * Interfaces providers.
          */
         App\Providers\ContractServiceProvider::class,
 

@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Contracts\Services\CompanyServiceInterface;
 use Illuminate\Http\Request;
 use App\Helpers\Validations;
+use App\Services\CompanyService;
 
 class CompanyController extends Controller
 {
     const PAGINATION = 10;
+
+    /** @var CompanyService $companyService */
     private $companyService;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param CompanyServiceInterface $companyServiceInterface
      */
@@ -35,7 +38,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Get create company
+     * Get create company.
      * 
      * @return Response
      */
@@ -45,7 +48,8 @@ class CompanyController extends Controller
     }
 
     /**
-     * Post create company
+     * Post create company.
+     * Validate data with mandatory requests.
      *
      * @param  Request  $request
      * 
@@ -79,12 +83,16 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = $this->companyService->getById($id);
+
+        if(!$company)
+            return redirect()->route("companies")->withErrors('Company not found!');
         
         return view('pages.companies.edit', array('company' => $company));
     }
 
     /**
-     * Update company
+     * Update company.
+     * Validate data with mandatory requests.
      *
      * @param int $id company id 
      * @param Request $request

@@ -13,7 +13,8 @@ class ImageManagement
     private $imgPathCompany = '/images/companies';
 
     /**
-     * Create image service
+     * Create image service using UploadFile store.
+     * Is necessary set as a public repository, to remove in case od update or delete.
      * 
      * @param UploadedFile $image
      * 
@@ -25,7 +26,8 @@ class ImageManagement
     }
 
     /**
-     * Update image service
+     * Update image service.
+     * Remove old image from storage to save space.
      * 
      * @param string $oldImage
      * @param UploadedFile $newImage
@@ -42,7 +44,7 @@ class ImageManagement
     }
 
     /**
-     * Delete image from storage
+     * Delete image from storage.
      * 
      * @param string $image
      * 

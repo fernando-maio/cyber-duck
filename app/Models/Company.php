@@ -22,7 +22,7 @@ class Company extends Model
     ];
 
     /**
-     * Employee relation
+     * Employee relation.
      */
     public function employee()
     {

@@ -11,7 +11,7 @@ class EmployeeService implements EmployeeServiceInterface
     private $employee;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param Employee $employee
      */
@@ -21,7 +21,7 @@ class EmployeeService implements EmployeeServiceInterface
     }
 
     /**
-     * List Employees
+     * List employees ordered by name.
      * 
      * @return Response
      */
@@ -31,7 +31,7 @@ class EmployeeService implements EmployeeServiceInterface
     }
 
     /**
-     * Create Employee
+     * Create Employee.
      *
      * @param  array $data
      * 
@@ -43,7 +43,7 @@ class EmployeeService implements EmployeeServiceInterface
     }
 
     /**
-     * Get Employee by ID
+     * Get Employee by ID.
      *
      * @param  int $id
      * 
@@ -55,7 +55,8 @@ class EmployeeService implements EmployeeServiceInterface
     }
 
     /**
-     * Update employee
+     * Update employee.
+     * If the employee wasn't found, return an status error to Controller.
      *
      * @param  int $id
      * @param  array $data
@@ -87,6 +88,7 @@ class EmployeeService implements EmployeeServiceInterface
 
     /**
      * Delete employee
+     * If the employee wasn't found, return an status error to Controller.
      *
      * @param  int $id
      * 

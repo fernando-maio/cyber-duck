@@ -10,11 +10,15 @@ use App\Helpers\Validations;
 class EmployeeController extends Controller
 {
     const PAGINATION = 10;
+
+    /** @var EmployeeService $employeeService */
     private $employeeService;
+    
+    /** @var CompanyService $companyService */
     private $companyService;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param EmployeeServiceInterface $employeeServiceInterface
      * @param CompanyServiceInterface $companyServiceInterface
@@ -39,7 +43,7 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Get create employee
+     * Get create employee.
      * 
      * @return Response
      */
@@ -50,7 +54,8 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Post create employee
+     * Post create employee.
+     * Validate data with mandatory requests.
      *
      * @param  Request  $request
      * 
@@ -85,12 +90,16 @@ class EmployeeController extends Controller
     {
         $employee = $this->employeeService->getById($id);
         $companies = $this->companyService->list()->get();
+
+        if(!$employee)
+            return redirect()->route("employees")->withErrors('Employee not found!');
         
         return view('pages.employees.edit', array('employee' => $employee, 'companies' => $companies));
     }
 
     /**
-     * Update employee
+     * Update employee.
+     * Validate data with mandatory requests.
      *
      * @param int $id employee id 
      * @param Request $request

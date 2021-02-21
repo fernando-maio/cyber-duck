@@ -11,7 +11,7 @@ use Illuminate\Support\ServiceProvider;
 class ContractServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * Register services. Bind Services Interfaces.
      *
      * @return void
      */
